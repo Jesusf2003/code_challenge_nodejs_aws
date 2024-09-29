@@ -1,0 +1,24 @@
+{
+  "name": "code_challenge_nodejs_aws",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "axios": "^1.7.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  },
+  "dependencies": {
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7"
+  }
+}
