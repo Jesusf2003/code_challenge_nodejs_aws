@@ -1,28 +1,55 @@
-service: challenge-api
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: fernando21
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: challenge-serverless
 
 provider:
   name: aws
   runtime: nodejs20.x
+  stage: dev
   region: us-east-1
+  httpApi:
+    cors:
+      allowedOrigins:
+        - '*'
+      allowedHeaders:
+        - Content-Type
+      allowedMethods:
+        - GET
+        - POST
+  iam:
+    role: arn:aws:iam::794038249206:role/admin-challenge-rol
   iamRoleStatements:
     - Effect: "Allow"
       Action:
-        - "dynamodb:PutItem"
-        - "dynamodb:Scan"
         - "dynamodb:GetItem"
-      Resource:
-        - "arn:aws:dynamodb:us-east-1:*:table/Persona"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+        - "dynamodb:DeleteItem"
+        - "dynamodb:Scan"
+      Resource: 
+        - "arn:aws:dynamodb:us-east-1:794038249206:table/Persona"
 
 functions:
-  getPersona:
-    handler: src/handlers/getPersona.handler
+  getPersonas:
+    handler: src/handlers/getPersonas.handler
     events:
-      - http:
-          path: persona
+      - httpApi:
+          path: /personas
           method: get
-  postPersona:
-    handler: src/handlers/postPersona.handler
+  postPersonas:
+    handler: src/handlers/postPersonas.handler
     events:
-      - http:
-          path: persona
+      - httpApi:
+          path: /personas
           method: post
+
+package:
+  include:
+    - node_modules/**
+  exclude:
+    - ./**/.git/**
+    - ./**/.gitignore
+    - ./**/.env*
+    - ./**/.serverless/**
+    - ./**/.terraform/**

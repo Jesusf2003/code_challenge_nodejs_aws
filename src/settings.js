@@ -1,5 +1,4 @@
 const mysql = require("mysql2");
-const BASE_URL = "https://swapi.dev/api";
 
 const dbConnection = mysql.createConnection({
     host: "localhost",
@@ -10,6 +9,5 @@ const dbConnection = mysql.createConnection({
 });
 
 module.exports = {
-    BASE_URL,
     dbConnection
 }

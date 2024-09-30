@@ -1,3 +1,8 @@
+.vscode/
 node_modules/
-package-lock.json
+.terraform/
+.serverless/
 terraform.exe
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

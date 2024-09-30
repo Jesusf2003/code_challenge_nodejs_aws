@@ -1,9 +1,10 @@
-version: '3.8'
+version: '3.7'
 services:
   mysqldb:
     image: mysql:latest
+    restart: unless-stopped
     environment:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_DATABASE=codechallengedb
     ports:
-      - 3306:3306
+      - '3306:3306'
