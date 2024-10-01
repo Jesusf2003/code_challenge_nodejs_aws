@@ -8,17 +8,6 @@ provider:
   runtime: nodejs20.x
   stage: dev
   region: us-east-1
-  httpApi:
-    cors:
-      allowedOrigins:
-        - '*'
-      allowedHeaders:
-        - Content-Type
-      allowedMethods:
-        - GET
-        - POST
-  iam:
-    role: arn:aws:iam::794038249206:role/admin-challenge-rol
   iamRoleStatements:
     - Effect: "Allow"
       Action:
